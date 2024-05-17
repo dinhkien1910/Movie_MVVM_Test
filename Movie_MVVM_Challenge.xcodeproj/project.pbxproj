@@ -13,6 +13,10 @@
 		D09E6E682BF700C300B47F5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D09E6E662BF700C300B47F5D /* Main.storyboard */; };
 		D09E6E6A2BF700C400B47F5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D09E6E692BF700C400B47F5D /* Assets.xcassets */; };
 		D09E6E6D2BF700C400B47F5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D09E6E6B2BF700C400B47F5D /* LaunchScreen.storyboard */; };
+		D09E6E762BF70A8300B47F5D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E6E752BF70A8300B47F5D /* Observable.swift */; };
+		D09E6E792BF70ABA00B47F5D /* NetworkServicesDefinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E6E782BF70ABA00B47F5D /* NetworkServicesDefinations.swift */; };
+		D09E6E7B2BF711BC00B47F5D /* NetworkServicesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E6E7A2BF711BC00B47F5D /* NetworkServicesProtocol.swift */; };
+		D09E6E7D2BF711D400B47F5D /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E6E7C2BF711D400B47F5D /* NetworkServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		D09E6E692BF700C400B47F5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D09E6E6C2BF700C400B47F5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D09E6E6E2BF700C400B47F5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D09E6E752BF70A8300B47F5D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		D09E6E782BF70ABA00B47F5D /* NetworkServicesDefinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServicesDefinations.swift; sourceTree = "<group>"; };
+		D09E6E7A2BF711BC00B47F5D /* NetworkServicesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServicesProtocol.swift; sourceTree = "<group>"; };
+		D09E6E7C2BF711D400B47F5D /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,8 @@
 		D09E6E5F2BF700C300B47F5D /* Movie_MVVM_Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				D09E6E772BF70A9B00B47F5D /* Network */,
+				D09E6E742BF70A5E00B47F5D /* Binding */,
 				D09E6E602BF700C300B47F5D /* AppDelegate.swift */,
 				D09E6E622BF700C300B47F5D /* SceneDelegate.swift */,
 				D09E6E642BF700C300B47F5D /* ViewController.swift */,
@@ -65,6 +75,24 @@
 				D09E6E6E2BF700C400B47F5D /* Info.plist */,
 			);
 			path = Movie_MVVM_Challenge;
+			sourceTree = "<group>";
+		};
+		D09E6E742BF70A5E00B47F5D /* Binding */ = {
+			isa = PBXGroup;
+			children = (
+				D09E6E752BF70A8300B47F5D /* Observable.swift */,
+			);
+			path = Binding;
+			sourceTree = "<group>";
+		};
+		D09E6E772BF70A9B00B47F5D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D09E6E782BF70ABA00B47F5D /* NetworkServicesDefinations.swift */,
+				D09E6E7A2BF711BC00B47F5D /* NetworkServicesProtocol.swift */,
+				D09E6E7C2BF711D400B47F5D /* NetworkServices.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +166,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D09E6E7B2BF711BC00B47F5D /* NetworkServicesProtocol.swift in Sources */,
+				D09E6E762BF70A8300B47F5D /* Observable.swift in Sources */,
 				D09E6E652BF700C300B47F5D /* ViewController.swift in Sources */,
 				D09E6E612BF700C300B47F5D /* AppDelegate.swift in Sources */,
+				D09E6E7D2BF711D400B47F5D /* NetworkServices.swift in Sources */,
 				D09E6E632BF700C300B47F5D /* SceneDelegate.swift in Sources */,
+				D09E6E792BF70ABA00B47F5D /* NetworkServicesDefinations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
