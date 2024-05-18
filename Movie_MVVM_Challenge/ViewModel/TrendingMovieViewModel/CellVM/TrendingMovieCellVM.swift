@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TrendingMovieCellVM {
+struct TrendingMovieCellVM {
     var id: Int
     var name: String
     var date: String

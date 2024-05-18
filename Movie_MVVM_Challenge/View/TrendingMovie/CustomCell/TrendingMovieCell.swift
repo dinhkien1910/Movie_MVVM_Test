@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TrendingMovieCell: UITableViewCell {
+class TrendingMovieCell: UITableViewCell, NibLoadable {
     @IBOutlet weak var containView: UIView!
     @IBOutlet weak var imgMovie: UIImageView!
     @IBOutlet weak var nameMovie: UILabel!
