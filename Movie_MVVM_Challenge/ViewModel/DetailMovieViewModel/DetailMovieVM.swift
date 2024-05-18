@@ -44,13 +44,9 @@ class DetailMovieVM {
     }
     
     func getSimilarMovieData(movieID: Int) {
-        if isLoadingData.value ?? true {
-            return
-        }
+
         
-        isLoadingData.value = true
         listSimilarMovieAPI.getListSimilarMovies(movieID: movieID){ [weak self] result in
-            self?.isLoadingData.value = false
             
             switch result {
             case .success(let similarMovieData):
@@ -62,13 +58,8 @@ class DetailMovieVM {
     }
     
     func getActorData(movieID: Int) {
-        if isLoadingData.value ?? true {
-            return
-        }
         
-        isLoadingData.value = true
         listActorAPI.getListActors(movieID: movieID){ [weak self] result in
-            self?.isLoadingData.value = false
             
             switch result {
             case .success(let actorData):

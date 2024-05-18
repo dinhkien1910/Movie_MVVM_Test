@@ -41,19 +41,22 @@ class DetailMovieVC: UIViewController {
     private var listSimilarMovies: [SimilarMovieCellVM] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        setupDelegate()
         bindViewModel()
         viewModel.getDetailMovieData(movieID: movieID ?? 0)
         viewModel.getSimilarMovieData(movieID: movieID ?? 0)
         viewModel.getActorData(movieID: movieID ?? 0)
 
-        setupUI()
-        setupDelegate()
         // Do any additional setup after loading the view.
     }
     
     private func setupDelegate() {
         detailTableView.dataSource = self
         detailTableView.delegate = self
+        detailTableView.register(ActorsViewCell.getNib(), forCellReuseIdentifier: ActorsViewCell.getNibName())
+        detailTableView.register(SimilarMovieCell.getNib(), forCellReuseIdentifier: SimilarMovieCell.getNibName())
+
     }
     
     private func setupUI() {
@@ -68,6 +71,8 @@ class DetailMovieVC: UIViewController {
             }
 
             detailMoviesDataSource = movies
+            detailTableView.reloadData()
+
             DispatchQueue.main.async {
                 self.setupData()
             }
@@ -79,6 +84,8 @@ class DetailMovieVC: UIViewController {
                 return
             }
             listSimilarMovies = movies
+            detailTableView.reloadData()
+
         }
         
         viewModel.actors.bind { [weak self] actors in
@@ -87,6 +94,8 @@ class DetailMovieVC: UIViewController {
                 return
             }
             listActors = actors
+            detailTableView.reloadData()
+
         }
     }
     
@@ -152,7 +161,24 @@ class DetailMovieVC: UIViewController {
 }
 
 extension DetailMovieVC: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch DetailCellType(rawValue: indexPath.section) {
+        case .actors:
+            if listActors.isEmpty {
+                return 0
+            } else {
+                return 400
+            }
+        case .similarMovie:
+            if listSimilarMovies.isEmpty {
+                return 0
+            } else {
+                return 330
+            }
+        default:
+            return 100
+        }
+    }
 }
 
 extension DetailMovieVC: UITableViewDataSource {
@@ -161,18 +187,30 @@ extension DetailMovieVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.numberOfRows(in: section)
+        if DetailCellType(rawValue: section) == .actors {
+            return 1
+        } else {
+            return listSimilarMovies.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cellActor = tableView.dequeueReusableCell(
+        guard let cellActors = tableView.dequeueReusableCell(
             withIdentifier: ActorsViewCell.reusableIdentifier) as? ActorsViewCell,
               let cellSimilarMovie = tableView.dequeueReusableCell(
-                withIdentifier: SimilarMovieCell.reusableIdentifier) as? SimilarMovieCell else {
+                withIdentifier: SimilarMovieCell.reusableIdentifier) as? SimilarMovieCell
+        else {
             return UITableViewCell()
         }
-        return UITableViewCell()
+        switch DetailCellType(rawValue: indexPath.section) {
+        case .actors:
+            cellActors.setupData(with: listActors)
+            return cellActors
+        case .similarMovie:
+            cellSimilarMovie.setupData(with: listSimilarMovies[indexPath.row])
+            return cellSimilarMovie
+        default:
+            return UITableViewCell()
+        }
     }
-    
-    
 }

@@ -26,7 +26,7 @@ class TrendingMovieVC: UIViewController {
     }
     
     func setupTableView() {
-        trendingTableView.register(UINib(nibName: TrendingMovieCell.getNibName(), bundle: nil), forCellReuseIdentifier: TrendingMovieCell.reusableIdentifier)
+        trendingTableView.register(TrendingMovieCell.getNib(), forCellReuseIdentifier: TrendingMovieCell.getNibName())
         trendingTableView.delegate = self
         trendingTableView.dataSource = self
     }
@@ -87,7 +87,7 @@ extension TrendingMovieVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cellMovie = tableView.dequeueReusableCell(withIdentifier: TrendingMovieCell.getNibName(), for: indexPath) as? TrendingMovieCell else {
+        guard let cellMovie = tableView.dequeueReusableCell(withIdentifier: TrendingMovieCell.reusableIdentifier, for: indexPath) as? TrendingMovieCell else {
             return UITableViewCell()
         }
         cellMovie.setupCell(with: trendingMoviesDataSource[indexPath.row])
