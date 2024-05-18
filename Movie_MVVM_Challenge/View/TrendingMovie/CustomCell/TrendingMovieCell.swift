@@ -33,28 +33,21 @@ class TrendingMovieCell: UITableViewCell, NibLoadable {
         nameMovie.text = data.name
         dateMovie.text = data.date
         scoreMovie.text = data.score
-        loadImage(imgURL: data.image)
-    }
-    
-    func loadImage(imgURL: URL?) {
-            guard let url = imgURL else { return }
-            
-            // Show the activity indicator
-            URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-                guard let self = self else { return }
-                if let error = error {
-                    print("Error loading image: \(error.localizedDescription)")
-                    return
-                }
-                
-                if let data = data, let image = UIImage(data: data) {
-                    // Display the loaded image
-                    DispatchQueue.main.async {
-                        self.imgMovie.image = image
+        if let poster = data.image {
+            if let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500/\(poster)") {
+                ImageLoader.shared.loadImage(from: imageUrl) { [weak self] result in
+                    switch result {
+                    case .success(let img):
+                        DispatchQueue.main.async {
+                            self?.imgMovie.image = img
+                        }
+                    case .failure(let err):
+                        print(err)
                     }
                 }
-            }.resume()
+            }
+        } else {
+            imgMovie.image = UIImage(named: "placeholder")
         }
-    
-    
+    }
 }

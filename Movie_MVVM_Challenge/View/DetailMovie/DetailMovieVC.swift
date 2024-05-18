@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum DetailCellType: Int {
+    case actors
+    case similarMovie
+    case detailCellTypeCount
+}
+
 class DetailMovieVC: UIViewController {
 
     @IBOutlet weak var containView: UIView!
@@ -23,6 +29,7 @@ class DetailMovieVC: UIViewController {
     @IBOutlet weak var imgStar5: UIImageView!
     @IBOutlet weak var averageVoteMovie: UILabel!
     @IBOutlet weak var overviewMovie: UILabel!
+    @IBOutlet weak var detailTableView: UITableView!
     var movieID: Int?
     
     //ViewModel
@@ -30,30 +37,56 @@ class DetailMovieVC: UIViewController {
     
     //Variables:
     var detailMoviesDataSource: DetailMovieViewEntity?
+    private var listActors: [ActorCellVM] = []
+    private var listSimilarMovies: [SimilarMovieCellVM] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
-        viewModel.getData(movieID: movieID ?? 0)
+        viewModel.getDetailMovieData(movieID: movieID ?? 0)
+        viewModel.getSimilarMovieData(movieID: movieID ?? 0)
+        viewModel.getActorData(movieID: movieID ?? 0)
+
         setupUI()
+        setupDelegate()
         // Do any additional setup after loading the view.
     }
     
-    func setupUI() {
+    private func setupDelegate() {
+        detailTableView.dataSource = self
+        detailTableView.delegate = self
+    }
+    
+    private func setupUI() {
         imgBackDrop.alpha = 0.5
     }
 
-    func bindViewModel() {
+    private func bindViewModel() {
         viewModel.detailMovies.bind { [weak self] movies in
             guard let self = self,
                   let movies = movies else {
                 return
             }
-            print("bindData")
 
             detailMoviesDataSource = movies
             DispatchQueue.main.async {
                 self.setupData()
             }
+        }
+        
+        viewModel.similarMovies.bind { [weak self] similarMovies in
+            guard let self = self,
+                  let movies = similarMovies else {
+                return
+            }
+            listSimilarMovies = movies
+        }
+        
+        viewModel.actors.bind { [weak self] actors in
+            guard let self = self,
+                  let actors = actors else {
+                return
+            }
+            listActors = actors
         }
     }
     
@@ -116,14 +149,30 @@ class DetailMovieVC: UIViewController {
                 }
             }.resume()
         }
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension DetailMovieVC: UITableViewDelegate {
+    
+}
+
+extension DetailMovieVC: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return DetailCellType.detailCellTypeCount.rawValue
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.numberOfRows(in: section)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cellActor = tableView.dequeueReusableCell(
+            withIdentifier: ActorsViewCell.reusableIdentifier) as? ActorsViewCell,
+              let cellSimilarMovie = tableView.dequeueReusableCell(
+                withIdentifier: SimilarMovieCell.reusableIdentifier) as? SimilarMovieCell else {
+            return UITableViewCell()
+        }
+        return UITableViewCell()
+    }
+    
+    
 }

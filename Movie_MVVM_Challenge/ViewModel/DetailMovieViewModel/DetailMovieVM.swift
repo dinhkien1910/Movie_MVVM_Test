@@ -9,10 +9,14 @@ import Foundation
 import Foundation
 class DetailMovieVM {
     var isLoadingData: Observable<Bool> = Observable(false)
-    var listDetailMovie: DetailMovieModel?
     var detailMovies: Observable<DetailMovieViewEntity> = Observable(nil)
+    var similarMovies: Observable<[SimilarMovieCellVM]> = Observable(nil)
+    var actors: Observable<[ActorCellVM]> = Observable(nil)
+
     private let listDetailMovieAPI: GetListDetailMovieAPIProtocol = GetListDetailMovieAPI()
-    
+    private let listSimilarMovieAPI: GetListSimilarMovieAPIProtocol = GetListSimilarMovieAPI()
+    private let listActorAPI: GetListActorAPIProtocol = GetListActorAPI()
+
     func numberOfSections() -> Int {
         return 1
     }
@@ -21,7 +25,7 @@ class DetailMovieVM {
         return 1
     }
     
-    func getData(movieID: Int) {
+    func getDetailMovieData(movieID: Int) {
         if isLoadingData.value ?? true {
             return
         }
@@ -38,6 +42,43 @@ class DetailMovieVM {
             }
         }
     }
+    
+    func getSimilarMovieData(movieID: Int) {
+        if isLoadingData.value ?? true {
+            return
+        }
+        
+        isLoadingData.value = true
+        listSimilarMovieAPI.getListSimilarMovies(movieID: movieID){ [weak self] result in
+            self?.isLoadingData.value = false
+            
+            switch result {
+            case .success(let similarMovieData):
+                self?.similarMovies.value = similarMovieData.compactMap({SimilarMovieCellVM(similarMovie: $0)})
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+    
+    func getActorData(movieID: Int) {
+        if isLoadingData.value ?? true {
+            return
+        }
+        
+        isLoadingData.value = true
+        listActorAPI.getListActors(movieID: movieID){ [weak self] result in
+            self?.isLoadingData.value = false
+            
+            switch result {
+            case .success(let actorData):
+                self?.actors.value = actorData.compactMap({ActorCellVM(actor: $0)})
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+    
 }
 
 struct DetailMovieViewEntity {

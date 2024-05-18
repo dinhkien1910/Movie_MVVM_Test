@@ -27,7 +27,6 @@ extension GetListMovieAPI: GetListMovieAPIProtocol {
         let requestInfo: RequestInfo = RequestInfo(urlInfo: listMovieURL, httpMethod: .get, params: nil)
         networkServices.request(info: requestInfo) { [weak self] (responseResult) in
             guard let self = self else {
-                print("GetListTrendingAPI nil before complete callback")
                 result(.failure(.decodeDataFailed))
                 return
             }

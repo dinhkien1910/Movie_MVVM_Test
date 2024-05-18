@@ -8,11 +8,11 @@
 import Foundation
 
 struct TrendingMovieCellVM {
-    var id: Int
-    var name: String
-    var date: String
-    var score: String
-    var image: URL?
+    let id: Int
+    let name: String
+    let date: String
+    let score: String
+    let image: String?
     
     init(movie: Movie) {
         self.id = movie.id
@@ -23,10 +23,6 @@ struct TrendingMovieCellVM {
         } else {
             self.score = String(format: "%.1f", movie.voteAverage) + "/10"
         }
-        self.image = makeImageURL(movie.posterPath ?? "")
-    }
-    
-    private func makeImageURL(_ imageCode: String) -> URL? {
-        URL(string: "https://image.tmdb.org/t/p/w500/\(imageCode)")
+        self.image = movie.posterPath ?? ""
     }
 }

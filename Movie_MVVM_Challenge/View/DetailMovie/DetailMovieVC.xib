@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="averageVoteMovie" destination="zQ7-kO-9oB" id="V2r-JJ-DCa"/>
                 <outlet property="containView" destination="URX-Ya-cu5" id="vhD-Gp-EZ0"/>
+                <outlet property="detailTableView" destination="Vin-vN-R3v" id="WIp-64-eYH"/>
                 <outlet property="genresMovie" destination="QNg-IK-ND0" id="GJw-fL-mPF"/>
                 <outlet property="imgBackDrop" destination="V6U-Bv-dw8" id="yst-ix-U33"/>
                 <outlet property="imgMovie" destination="f7r-xi-CQR" id="fwF-nO-7uw"/>
@@ -148,6 +149,10 @@
                         <constraint firstAttribute="height" constant="290" id="qhF-Sd-9mX"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Vin-vN-R3v">
+                    <rect key="frame" x="0.0" y="349" width="393" height="469"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -155,8 +160,12 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="V6U-Bv-dw8" secondAttribute="trailing" id="5Ds-SG-CPQ"/>
                 <constraint firstItem="V6U-Bv-dw8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="EhD-tK-0Fh"/>
                 <constraint firstItem="V6U-Bv-dw8" firstAttribute="bottom" secondItem="URX-Ya-cu5" secondAttribute="bottom" id="JGJ-VN-OAk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Vin-vN-R3v" secondAttribute="bottom" id="Mnj-i3-BdP"/>
+                <constraint firstItem="Vin-vN-R3v" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Mtf-A1-KbW"/>
                 <constraint firstItem="URX-Ya-cu5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="RaN-NF-Pyu"/>
+                <constraint firstItem="Vin-vN-R3v" firstAttribute="top" secondItem="V6U-Bv-dw8" secondAttribute="bottom" id="U38-zh-t9k"/>
                 <constraint firstItem="URX-Ya-cu5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="VFU-4Q-sYa"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vin-vN-R3v" secondAttribute="trailing" id="eGd-lS-a3o"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="URX-Ya-cu5" secondAttribute="trailing" id="kg6-vi-2SP"/>
                 <constraint firstItem="V6U-Bv-dw8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="l8d-zr-0oW"/>
             </constraints>
