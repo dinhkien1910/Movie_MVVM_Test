@@ -68,6 +68,13 @@ extension TrendingMovieVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         200
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movieID = trendingMoviesDataSource[indexPath.row].id
+        let detailMovieVC = DetailMovieVC(nibName: "DetailMovieVC", bundle: nil)
+            detailMovieVC.movieID = movieID
+            navigationController?.pushViewController(detailMovieVC, animated: true)
+        }
 }
 
 extension TrendingMovieVC: UITableViewDataSource {
