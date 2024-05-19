@@ -54,6 +54,7 @@ class DetailMovieVC: UIViewController {
     private func setupDelegate() {
         detailTableView.dataSource = self
         detailTableView.delegate = self
+        detailTableView.register(HeaderDetailViewCell.getNib(), forHeaderFooterViewReuseIdentifier:HeaderDetailViewCell.reusableIdentifier)
         detailTableView.register(ActorsViewCell.getNib(), forCellReuseIdentifier: ActorsViewCell.getNibName())
         detailTableView.register(SimilarMovieCell.getNib(), forCellReuseIdentifier: SimilarMovieCell.getNibName())
 
@@ -177,6 +178,41 @@ extension DetailMovieVC: UITableViewDelegate {
             }
         default:
             return 100
+        }
+    }
+    
+    // Setup section header view
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderDetailViewCell.reusableIdentifier) as? HeaderDetailViewCell else {
+            return UIView()
+        }
+        switch DetailCellType(rawValue: section) {
+        case .actors:
+            headerView.setupTitle(with: "Cast")
+        case .similarMovie:
+            headerView.setupTitle(with: "Similar movies")
+        default:
+            return UIView()
+        }
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch DetailCellType(rawValue: section) {
+        case .actors:
+            if listActors.isEmpty {
+                return 0
+            } else {
+                return 50
+            }
+        case .similarMovie:
+            if listSimilarMovies.isEmpty {
+                return 0
+            } else {
+                return 50
+            }
+        default:
+            return 50
         }
     }
 }
