@@ -17,16 +17,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M2c-AI-cX9">
-                        <rect key="frame" x="0.0" y="0.0" width="369" height="98"/>
+                        <rect key="frame" x="0.0" y="8" width="369" height="90"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzW-1Z-wdw">
-                                <rect key="frame" x="32" y="0.0" width="305" height="93"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzW-1Z-wdw">
+                                <rect key="frame" x="32" y="0.0" width="305" height="85"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pc3-Ey-j8j">
-                                <rect key="frame" x="0.0" y="93" width="369" height="5"/>
+                                <rect key="frame" x="0.0" y="85" width="369" height="5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="5" id="WGv-3d-EpB"/>
@@ -43,11 +43,10 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="pc3-Ey-j8j" firstAttribute="width" relation="greaterThanOrEqual" secondItem="Jkh-nc-heg" secondAttribute="width" id="WSa-JN-5nl"/>
                     <constraint firstAttribute="bottom" secondItem="M2c-AI-cX9" secondAttribute="bottom" id="a1W-dA-2JZ"/>
-                    <constraint firstAttribute="trailing" secondItem="M2c-AI-cX9" secondAttribute="trailing" id="b7I-I5-C9f"/>
                     <constraint firstItem="M2c-AI-cX9" firstAttribute="leading" secondItem="Jkh-nc-heg" secondAttribute="leading" id="fNR-mM-AHs"/>
-                    <constraint firstItem="M2c-AI-cX9" firstAttribute="top" secondItem="Jkh-nc-heg" secondAttribute="top" id="fxR-Nx-Uua"/>
+                    <constraint firstItem="M2c-AI-cX9" firstAttribute="top" secondItem="Jkh-nc-heg" secondAttribute="top" constant="8" id="fxR-Nx-Uua"/>
+                    <constraint firstItem="pc3-Ey-j8j" firstAttribute="width" relation="greaterThanOrEqual" secondItem="Jkh-nc-heg" secondAttribute="width" multiplier="1:3" id="xQP-Oe-9YO"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

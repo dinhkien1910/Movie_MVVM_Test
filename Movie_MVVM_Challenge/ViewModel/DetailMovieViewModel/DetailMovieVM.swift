@@ -16,14 +16,6 @@ class DetailMovieVM {
     private let listDetailMovieAPI: GetListDetailMovieAPIProtocol = GetListDetailMovieAPI()
     private let listSimilarMovieAPI: GetListSimilarMovieAPIProtocol = GetListSimilarMovieAPI()
     private let listActorAPI: GetListActorAPIProtocol = GetListActorAPI()
-
-    func numberOfSections() -> Int {
-        return 1
-    }
-    
-    func numberOfRows(in section: Int) -> Int {
-        return 1
-    }
     
     func getDetailMovieData(movieID: Int) {
         if isLoadingData.value ?? true {

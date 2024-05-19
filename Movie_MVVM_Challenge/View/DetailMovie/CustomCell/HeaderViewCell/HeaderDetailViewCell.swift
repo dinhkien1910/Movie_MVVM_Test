@@ -13,10 +13,17 @@ class HeaderDetailViewCell: UITableViewHeaderFooterView, NibLoadable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setupUI()
     }
     
     func setupTitle(with title: String) {
         nameSection.text = title
+    }
+    
+    private func setupUI() {
+        indicatorView.backgroundColor = .nfRed
+        nameSection.textColor = .nfWhite
+        contentView.backgroundColor = .black
+        contentView.alpha = 0.95
     }
 }

@@ -49,6 +49,7 @@
 		D09E6ED12BF9AB8E00B47F5D /* HeaderDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E6ED02BF9AB8E00B47F5D /* HeaderDetailViewCell.swift */; };
 		D09E6ED32BF9ABAB00B47F5D /* HeaderDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09E6ED22BF9ABAB00B47F5D /* HeaderDetailViewCell.xib */; };
 		D09E6ED52BF9BCCD00B47F5D /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E6ED42BF9BCCD00B47F5D /* UIColorExtensions.swift */; };
+		D09E6ED72BF9DF5600B47F5D /* UILableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E6ED62BF9DF5600B47F5D /* UILableExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		D09E6ED02BF9AB8E00B47F5D /* HeaderDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderDetailViewCell.swift; sourceTree = "<group>"; };
 		D09E6ED22BF9ABAB00B47F5D /* HeaderDetailViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderDetailViewCell.xib; sourceTree = "<group>"; };
 		D09E6ED42BF9BCCD00B47F5D /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		D09E6ED62BF9DF5600B47F5D /* UILableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILableExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 				D09E6E972BF739BE00B47F5D /* UIViewExtensions.swift */,
 				D09E6EA52BF882BD00B47F5D /* ViewProtocol.swift */,
 				D09E6ED42BF9BCCD00B47F5D /* UIColorExtensions.swift */,
+				D09E6ED62BF9DF5600B47F5D /* UILableExtensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				D09E6E762BF70A8300B47F5D /* Observable.swift in Sources */,
 				D09E6ED52BF9BCCD00B47F5D /* UIColorExtensions.swift in Sources */,
 				D09E6E8C2BF717E500B47F5D /* TrendingMovieCell.swift in Sources */,
+				D09E6ED72BF9DF5600B47F5D /* UILableExtensions.swift in Sources */,
 				D09E6E652BF700C300B47F5D /* TrendingMovieVC.swift in Sources */,
 				D09E6EB52BF8AEB600B47F5D /* ActorsViewCell.swift in Sources */,
 				D09E6E612BF700C300B47F5D /* AppDelegate.swift in Sources */,
@@ -623,6 +627,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -651,6 +656,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

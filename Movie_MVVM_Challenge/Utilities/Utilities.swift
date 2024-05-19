@@ -15,7 +15,7 @@ class Utilities {
     func drawStar(scoreAverage: Double, stars: [UIImageView]) {
            for image in stars {
                image.tintColor = .white
-               image.image = UIImage(systemName: "star.fill")
+               image.image = UIImage(named: "star.fill")
            }
            let numberStar: Int = Int(scoreAverage/2)
            if numberStar == 0 {
@@ -23,7 +23,7 @@ class Utilities {
            }
            for index in 0..<numberStar {
                stars[index].tintColor = UIColor(red: 255/255, green: 190/255, blue: 0/255, alpha: 1)
-               stars[index].image = UIImage(systemName: "star.fill")
+               stars[index].image = UIImage(named: "star.fill")
            }
        }
 

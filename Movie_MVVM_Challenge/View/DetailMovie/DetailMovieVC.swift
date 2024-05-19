@@ -29,6 +29,7 @@ class DetailMovieVC: UIViewController {
     @IBOutlet weak var imgStar5: UIImageView!
     @IBOutlet weak var averageVoteMovie: UILabel!
     @IBOutlet weak var overviewMovie: UILabel!
+    @IBOutlet weak var btnSeeMore: UIButton!
     @IBOutlet weak var detailTableView: UITableView!
     var movieID: Int?
     
@@ -47,7 +48,9 @@ class DetailMovieVC: UIViewController {
         viewModel.getDetailMovieData(movieID: movieID ?? 0)
         viewModel.getSimilarMovieData(movieID: movieID ?? 0)
         viewModel.getActorData(movieID: movieID ?? 0)
-
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        swipeUp.direction = .up
+        containView.addGestureRecognizer(swipeUp)
         // Do any additional setup after loading the view.
     }
     
@@ -60,8 +63,61 @@ class DetailMovieVC: UIViewController {
 
     }
     
+    @IBAction func didTapSeeMore(_ sender: Any) {
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                guard let self = self else { return }
+                self.btnSeeMore.alpha = 0
+                self.btnSeeMore.isHidden = true
+                // Get the height constraint of the view
+                if let heightConstraint = self.containView.constraints.first(where: { $0.firstAttribute == .height }) {
+                    heightConstraint.isActive = false
+                }
+                // Update the constraint to be greater than or equal to 290
+                self.containView.heightAnchor.constraint(greaterThanOrEqualToConstant: 290).isActive = true
+                self.view.layoutIfNeeded()
+            })
+    }
+    
+    private func collapseOverview () {
+        if overviewMovie.countLines() > 3 {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                guard let self = self else { return }
+                if let heightConstraint = self.containView.constraints.first(where: { $0.firstAttribute == .height }) {
+                    heightConstraint.isActive = false
+                }
+                // Set the height constraint to 290
+                self.btnSeeMore.alpha = 1
+                self.btnSeeMore.isHidden = false
+                self.containView.heightAnchor.constraint(equalToConstant: 290).isActive = true
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc func handleSwipe(_ sender: UISwipeGestureRecognizer) {
+        if sender.state == .ended {
+            // Handle swipe up event here
+          collapseOverview()
+        }
+    }
+    
     private func setupUI() {
         imgBackDrop.alpha = 0.5
+        detailTableView.clipsToBounds = true
+        detailTableView.layer.cornerRadius = 20
+        detailTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        detailTableView.alpha = 0.95
+        detailTableView.backgroundColor = .black
+        nameMovie.textColor = .nfWhite
+        genresMovie.textColor = .nfWhite
+        averageVoteMovie.textColor = .nfWhite
+        languageMovie.textColor = .nfWhite
+        overviewMovie.textColor = .nfWhite
+        subInfoMovie.textColor = .nfWhite
+        imgMovie.clipsToBounds = true
+        imgMovie.layer.cornerRadius = 10
+        view.backgroundColor = .black
+        view.alpha = 0.95
     }
 
     private func bindViewModel() {
@@ -107,12 +163,30 @@ class DetailMovieVC: UIViewController {
             return
         }
         // image
-        if let imageUrl = URL(string: "https://image.tmdb.org/t/p/w780/\(data.poster )") {
-            loadImage(imgURL: imageUrl, uiImageView: self.imgMovie)
-        }
-        if let imageUrl = URL(string: "https://image.tmdb.org/t/p/w780/\(data.backdrop )") {
-            loadImage(imgURL: imageUrl, uiImageView: self.imgBackDrop)
-        }
+        if let imageUrl = URL(string: "https://image.tmdb.org/t/p/w780/\(data.poster)") {
+                ImageLoader.shared.loadImage(from: imageUrl) { [weak self] result in
+                    switch result {
+                    case .success(let img):
+                        DispatchQueue.main.async {
+                            self?.imgMovie.image = img
+                        }
+                    case .failure(let err):
+                        print(err)
+                    }
+                }
+            }
+        if let imageUrl = URL(string: "https://image.tmdb.org/t/p/w780/\(data.backdrop)") {
+                ImageLoader.shared.loadImage(from: imageUrl) { [weak self] result in
+                    switch result {
+                    case .success(let img):
+                        DispatchQueue.main.async {
+                            self?.imgBackDrop.image = img
+                        }
+                    case .failure(let err):
+                        print(err)
+                    }
+                }
+            }
 
         nameMovie.text = data.name
         // genres
@@ -140,25 +214,6 @@ class DetailMovieVC: UIViewController {
         overviewMovie.text = data.overview
     }
     
-    func loadImage(imgURL: URL?, uiImageView: UIImageView) {
-            guard let url = imgURL else { return }
-            
-            // Show the activity indicator
-            URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-                guard let self = self else { return }
-                if let error = error {
-                    print("Error loading image: \(error.localizedDescription)")
-                    return
-                }
-                
-                if let data = data, let image = UIImage(data: data) {
-                    // Display the loaded image
-                    DispatchQueue.main.async {
-                        uiImageView.image = image
-                    }
-                }
-            }.resume()
-        }
 }
 
 extension DetailMovieVC: UITableViewDelegate {
@@ -214,6 +269,10 @@ extension DetailMovieVC: UITableViewDelegate {
         default:
             return 50
         }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+            collapseOverview()
     }
 }
 

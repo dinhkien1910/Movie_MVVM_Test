@@ -24,12 +24,27 @@ class SimilarMovieCell: UITableViewCell, NibLoadable {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        setupUI()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    private func setupUI() {
+        imgMovie.clipsToBounds = true
+        imgMovie.layer.cornerRadius = 10
+        imgMovie.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMinYCorner]
+        containView.clipsToBounds = true
+        containView.layer.cornerRadius = 10
+        footerView.clipsToBounds = true
+        footerView.layer.cornerRadius = 10
+        footerView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMaxYCorner]
+        footerView.backgroundColor = .nfGray
+        nameMovie.textColor = .nfWhite
+        genresMovie.textColor = .nfWhite
     }
     
     func setupData(with data: SimilarMovieCellVM) {

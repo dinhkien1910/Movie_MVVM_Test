@@ -10,9 +10,21 @@ import UIKit
 class ActorCell: UICollectionViewCell, NibLoadable {
     @IBOutlet weak var imgActor: UIImageView!
     @IBOutlet weak var nameActor: UILabel!
+    @IBOutlet weak var containView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        setupUI()
+    }
+    
+    private func setupUI() {
+        imgActor.clipsToBounds = true
+        imgActor.layer.cornerRadius = 6
+        imgActor.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        containView.clipsToBounds = true
+        containView.layer.cornerRadius = 6
+        containView.backgroundColor = .nfGray
+        nameActor.textColor = .nfWhite
     }
     
     func setupData(with data: ActorCellVM) {

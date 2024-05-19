@@ -15,8 +15,13 @@ class ActorsViewCell: UITableViewCell, NibLoadable {
         super.awakeFromNib()
         // Initialization code
         setupDelegate()
+        setupUI()
     }
-
+    
+    private func setupUI() {
+        actorsCollectionView.alpha = 0.95
+        actorsCollectionView.backgroundColor = .black
+    }
     
     private func setupDelegate() {
         actorsCollectionView.dataSource = self

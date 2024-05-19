@@ -23,6 +23,11 @@ class TrendingMovieVC: UIViewController {
         setupTableView()
         bindViewModel()
         viewModel.getData()
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:
+                                                    UIColor(red: 0.90, green: 0.03, blue: 0.08, alpha: 1.0)]
+
+        view.backgroundColor = .nfBlack
+        trendingTableView.backgroundColor = .nfBlack
     }
     
     func setupTableView() {
@@ -33,9 +38,7 @@ class TrendingMovieVC: UIViewController {
     
     func bindViewModel() {
         viewModel.isLoadingData.bind { [weak self] isLoading in
-            print("isLoadingData")
             guard let isLoading = isLoading else {
-                print("return")
                 return
             }
             DispatchQueue.main.async {
@@ -54,7 +57,6 @@ class TrendingMovieVC: UIViewController {
                   let movies = movies else {
                 return
             }
-            print("bindData")
 
             trendingMoviesDataSource = movies
             DispatchQueue.main.async {
@@ -79,11 +81,11 @@ extension TrendingMovieVC: UITableViewDelegate {
 
 extension TrendingMovieVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.numberOfRows(in: section)
+        trendingMoviesDataSource.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel.numberOfSections()
+        1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

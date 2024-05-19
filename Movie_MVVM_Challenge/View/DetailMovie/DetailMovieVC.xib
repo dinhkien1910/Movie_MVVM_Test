@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailMovieVC" customModule="Movie_MVVM_Challenge" customModuleProvider="target">
             <connections>
                 <outlet property="averageVoteMovie" destination="zQ7-kO-9oB" id="V2r-JJ-DCa"/>
+                <outlet property="btnSeeMore" destination="wlP-5D-xAd" id="Etm-pQ-qCG"/>
                 <outlet property="containView" destination="URX-Ya-cu5" id="vhD-Gp-EZ0"/>
                 <outlet property="detailTableView" destination="Vin-vN-R3v" id="WIp-64-eYH"/>
                 <outlet property="genresMovie" destination="QNg-IK-ND0" id="GJw-fL-mPF"/>
@@ -34,7 +35,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V6U-Bv-dw8">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="349"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="357"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="URX-Ya-cu5">
                     <rect key="frame" x="0.0" y="59" width="393" height="290"/>
@@ -133,14 +134,24 @@
                                 </label>
                             </subviews>
                         </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlP-5D-xAd">
+                            <rect key="frame" x="288.33333333333331" y="258" width="96.666666666666686" height="34.333333333333314"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="See more"/>
+                            <connections>
+                                <action selector="didTapSeeMore:" destination="-1" eventType="touchUpInside" id="aLG-xN-5iu"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="wlP-5D-xAd" firstAttribute="top" secondItem="eYK-sD-9hd" secondAttribute="bottom" constant="-8" id="8uq-D3-Lpq"/>
                         <constraint firstItem="dNW-sx-3cp" firstAttribute="leading" secondItem="f7r-xi-CQR" secondAttribute="trailing" constant="8" id="A1I-eB-qya"/>
                         <constraint firstAttribute="trailing" secondItem="dNW-sx-3cp" secondAttribute="trailing" constant="8" id="FD1-Fe-fn0"/>
                         <constraint firstItem="f7r-xi-CQR" firstAttribute="leading" secondItem="URX-Ya-cu5" secondAttribute="leading" constant="16" id="RGs-y8-rbP"/>
                         <constraint firstAttribute="bottom" secondItem="eYK-sD-9hd" secondAttribute="bottom" constant="24" id="Rdw-sU-xQf"/>
                         <constraint firstItem="dNW-sx-3cp" firstAttribute="top" secondItem="URX-Ya-cu5" secondAttribute="top" constant="8" id="cgf-Ds-nM1"/>
+                        <constraint firstAttribute="trailing" secondItem="wlP-5D-xAd" secondAttribute="trailing" constant="8" id="dFD-sK-FGI"/>
                         <constraint firstItem="eYK-sD-9hd" firstAttribute="top" secondItem="f7r-xi-CQR" secondAttribute="bottom" constant="8" id="iLr-E4-rSc"/>
                         <constraint firstItem="eYK-sD-9hd" firstAttribute="leading" secondItem="URX-Ya-cu5" secondAttribute="leading" constant="16" id="oGi-vB-nse"/>
                         <constraint firstAttribute="trailing" secondItem="eYK-sD-9hd" secondAttribute="trailing" constant="8" id="pQt-at-Sva"/>
@@ -151,19 +162,19 @@
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Vin-vN-R3v">
                     <rect key="frame" x="0.0" y="349" width="393" height="469"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="Vin-vN-R3v" firstAttribute="top" secondItem="URX-Ya-cu5" secondAttribute="bottom" id="4Df-wQ-fo0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="V6U-Bv-dw8" secondAttribute="trailing" id="5Ds-SG-CPQ"/>
+                <constraint firstItem="Vin-vN-R3v" firstAttribute="top" secondItem="V6U-Bv-dw8" secondAttribute="bottom" constant="-8" id="5a5-Li-t1w"/>
                 <constraint firstItem="V6U-Bv-dw8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="EhD-tK-0Fh"/>
-                <constraint firstItem="V6U-Bv-dw8" firstAttribute="bottom" secondItem="URX-Ya-cu5" secondAttribute="bottom" id="JGJ-VN-OAk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Vin-vN-R3v" secondAttribute="bottom" id="Mnj-i3-BdP"/>
                 <constraint firstItem="Vin-vN-R3v" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Mtf-A1-KbW"/>
                 <constraint firstItem="URX-Ya-cu5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="RaN-NF-Pyu"/>
-                <constraint firstItem="Vin-vN-R3v" firstAttribute="top" secondItem="V6U-Bv-dw8" secondAttribute="bottom" id="U38-zh-t9k"/>
                 <constraint firstItem="URX-Ya-cu5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="VFU-4Q-sYa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vin-vN-R3v" secondAttribute="trailing" id="eGd-lS-a3o"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="URX-Ya-cu5" secondAttribute="trailing" id="kg6-vi-2SP"/>

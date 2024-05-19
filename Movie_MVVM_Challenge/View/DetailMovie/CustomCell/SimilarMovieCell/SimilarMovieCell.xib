@@ -29,13 +29,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7C-yr-9OT">
                                 <rect key="frame" x="0.0" y="217.33333333333334" width="362" height="57.666666666666657"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MovieName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Qs-5S-f9t">
-                                        <rect key="frame" x="8" y="7.9999999999999982" width="90.333333333333329" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MovieName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Qs-5S-f9t">
+                                        <rect key="frame" x="8" y="7.9999999999999982" width="230" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre1 | Genre2 | Genre3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfF-m7-bQp">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre1 | Genre2 | Genre3" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfF-m7-bQp">
                                         <rect key="frame" x="8" y="28.333333333333343" width="226" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -90,6 +90,7 @@
                                     <constraint firstItem="hCO-Xc-hjf" firstAttribute="top" secondItem="C7C-yr-9OT" secondAttribute="top" constant="8" id="7fh-ZM-N1y"/>
                                     <constraint firstAttribute="trailing" secondItem="hCO-Xc-hjf" secondAttribute="trailing" constant="4" id="KlD-xG-Rui"/>
                                     <constraint firstItem="LfF-m7-bQp" firstAttribute="top" secondItem="3Qs-5S-f9t" secondAttribute="bottom" id="i5b-y6-cev"/>
+                                    <constraint firstItem="hCO-Xc-hjf" firstAttribute="leading" secondItem="3Qs-5S-f9t" secondAttribute="trailing" id="qqw-J3-FyG"/>
                                     <constraint firstItem="LfF-m7-bQp" firstAttribute="leading" secondItem="3Qs-5S-f9t" secondAttribute="leading" id="ueh-Dq-ZYn"/>
                                 </constraints>
                             </view>

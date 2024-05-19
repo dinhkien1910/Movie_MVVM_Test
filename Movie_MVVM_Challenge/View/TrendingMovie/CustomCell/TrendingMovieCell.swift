@@ -17,16 +17,24 @@ class TrendingMovieCell: UITableViewCell, NibLoadable {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        containView.round()
-        containView.backgroundColor = .systemGray5
-        containView.addBorder(color: .lightGray, width: 1)
-        imgMovie.round(5)
+        setupUI()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    private func setupUI() {
+        contentView.backgroundColor = .nfBlack
+        containView.round()
+        containView.backgroundColor = .nfGray
+        containView.addBorder(color: .lightGray, width: 1)
+        imgMovie.round(5)
+        nameMovie.textColor = .nfLightGray
+        dateMovie.textColor = .nfLightGray
+        scoreMovie.textColor = .nfLightGray
     }
     
     func setupCell(with data: TrendingMovieCellVM) {
